@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
 
@@ -11,11 +11,27 @@ const AddFriend = () => {
         "DescribeYourFriend":""
     })
     const InputHandler=(event)=>{
-        setData({...data,[event.target.name]:[event.target.value]})
+        setData({...data,[event.target.name]:event.target.value})
     }
 
     const readValue=()=>{
         console.log(data)
+        axios.post("https://friendsapi-re5a.onrender.com/adddata",data).then(
+            (response)=>{
+                console.log(response.data)
+                if(response.data.status=="success")
+                    {
+                        alert("Successfully Added")
+                    }else{
+                        alert("Error")
+                    }
+            }
+        ).catch(
+            (error)=>{
+                console.log(error.message)
+                alert(error.message)
+            }
+        ).finally()
     }
   return (
     <div>

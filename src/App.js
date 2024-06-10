@@ -10,7 +10,6 @@ function App() {
     <Routes>
       <Route path="/" element={<AddFriend/>}/>
       <Route path="/view" element={<ViewAll/>}/>
-
     </Routes>
     </BrowserRouter>
   );
